@@ -77,13 +77,10 @@ class PostsController extends Controller
             //$extension = $request->file('cover_image')->getClientOriginalExtension();
 
             //Filename to store
-            $fileUrlToStore = Storage::url($path);
-
-            //Store Image
-            //$path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $fileUrlToStore = Storage::disk('s3')->url($path);
         } else {
             $fileNameToStore = 'storage/noimage.jpg';
-            $fileUrlToStore = Storage::url($fileNameToStore);
+            $fileUrlToStore = Storage::disk('s3')->url($fileNameToStore);
         }
 
         //Create New Post
@@ -164,7 +161,7 @@ class PostsController extends Controller
             $fileUrlToStore = Storage::disk('s3')->url($path);
         } else {
             $fileNameToStore = 'storage/noimage.jpg';
-            $fileUrlToStore = Storage::url($fileNameToStore);
+            $fileUrlToStore = Storage::disk('s3')->url($fileNameToStore);
         }
 
         $post = Post::find($id);
