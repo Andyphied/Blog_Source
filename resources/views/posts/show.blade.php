@@ -95,7 +95,7 @@
                     </div>
                     @if ($post->cover_image != 'noimage.jpg')
                         <div class="col-custom-2">
-                            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                            <img style="width:100%" src="{{$post->cover_image}}" alt="">
                         </div>
                     @endif
                     <br><br><br>

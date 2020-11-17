@@ -11,7 +11,7 @@
             <div class="card card-body bg-light span">
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
-                        <img class="image" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                        <img class="image" src="{{$post->cover_image}}" alt="">
                     </div>
                     <div class="col-md-8 col-sm-8">
                         <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>

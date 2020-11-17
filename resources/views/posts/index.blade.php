@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
                         <a href="/posts/{{$post->id}}">
-                            <img class="image" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                            <img class="image" src="{{$post->cover_image}}" alt="">
                         </a>
                     </div>
                     <div class="col-md-8 col-sm-8">

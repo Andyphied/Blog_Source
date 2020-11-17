@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-7 imgd">
-                <img class="img_res" src="/storage/landing_image/landing_image.png" alt="">
+                <img class="img_res" src="https://blogsource.s3.eu-west-2.amazonaws.com/storage/landing_image.png" alt="">
             </div>
             
         </section>
@@ -28,7 +28,7 @@
             <div class="col-sm">
                 <div class="row">
                     <div class="col-sm">
-                        <img class="image" src="/storage/cover_images/{{$featured[0]->cover_image}}" alt="">
+                        <img class="image" src="{{$featured[0]->cover_image}}" alt="">
                     </div>
                 </div>
                 <div class="row">
@@ -53,7 +53,7 @@
                 <section class="row row-custom-2">
                     <div class="col-4">
                         <a href="#">
-                            <img class="image" src="/storage/cover_images/{{$featured[1]->cover_image}}" alt="">
+                            <img class="image" src="{{$featured[1]->cover_image}}" alt="">
                         </a>
                     </div>
                     <div class="col-8">
@@ -69,7 +69,7 @@
                 <section class="row row-custom">
                     <div class="col-4">
                         <a href="#">
-                            <img class="image" src="/storage/cover_images/{{$featured[2]->cover_image}}" alt="">
+                            <img class="image" src="{{$featured[2]->cover_image}}" alt="">
                         </a>
                     </div>
                     <div class="col-8">
@@ -85,7 +85,7 @@
                 <section class="row row-custom">
                     <div class="col-4">
                         <a href="#">
-                            <img class="image" src="/storage/cover_images/{{$featured[3]->cover_image}}" alt="">
+                            <img class="image" src="{{$featured[3]->cover_image}}" alt="">
                         </a>
                     </div>
                     <div class="col-8">
@@ -102,7 +102,7 @@
             <section class="col-sm d-none d-xl-block">
                 <div class="row">
                     <div class="col-sm">
-                        <img class="image" src="/storage/cover_images/{{$featured[4]->cover_image}}" alt="">
+                        <img class="image" src="{{$featured[4]->cover_image}}" alt="">
                     </div>
                 </div>
                 <div class="row">
@@ -134,7 +134,7 @@
                     <section class="row row-custom d-flex" id="grid-item">
                         <div class="col-4">
                             <a href="#">
-                                <img class="image" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                                <img class="image" src="{{$post->cover_image}}" alt="">
                             </a>
                         </div>
                         <div class="col-8 justify-content-center align-self-center">
