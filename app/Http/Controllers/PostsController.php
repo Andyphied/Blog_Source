@@ -67,21 +67,23 @@ class PostsController extends Controller
         //Handle File upload
         if ($request->hasFile('cover_image')) {
             // Get File name with extension
-            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            $path = $request->file('cover_image')->store('images', 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
 
             //Get Just File Name
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //$fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
             //Get Just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //$extension = $request->file('cover_image')->getClientOriginalExtension();
 
             //Filename to store
-            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            $fileUrlToStore = Storage::url($path);
 
             //Store Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            //$path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'storage/noimage.jpg';
+            $fileUrlToStore = Storage::url($fileNameToStore);
         }
 
         //Create New Post
@@ -89,7 +91,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
+        $post->cover_image = $fileUrlToStore;
         $post->category_id = $request->input('category');
         $post->summary = $request->input('summary');
         $timeToRead = str_word_count($request->input('body')) / 255;
@@ -149,21 +151,20 @@ class PostsController extends Controller
 
         if ($request->hasFile('cover_image')) {
             // Get File name with extension
-            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            $path = $request->file('cover_image')->store('images', 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
 
             //Get Just File Name
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //$fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
             //Get Just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //$extension = $request->file('cover_image')->getClientOriginalExtension();
 
             //Filename to store
-            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-
-            //Store Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $fileUrlToStore = Storage::disk('s3')->url($path);
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'storage/noimage.jpg';
+            $fileUrlToStore = Storage::url($fileNameToStore);
         }
 
         $post = Post::find($id);
@@ -186,7 +187,7 @@ class PostsController extends Controller
                 // Delete previous Image
                 Storage::delete('public/cover_images/' . $post->cover_image);
             }
-            $post->cover_image = $fileNameToStore;
+            $post->cover_image = $fileUrlToStore;
         }
         $post->save();
 
